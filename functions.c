@@ -24,7 +24,7 @@ void menuAdmin() {
     printf("   [4] Search User By ID.\n");
     printf("   [5] Lock(unlock) an user.\n");
     printf("   [6] Sort users list.\n");
-  	printf("   [7] About us.\n");
+  	printf("   [7] Save File.\n");
     printf("   [0] Exit the Program.\n");
     printf("   ==========================\n");
 }
@@ -123,7 +123,7 @@ void addUser(User users[50], int *userCount) {
     } while (1);
 
     (*userCount)++;
-	luuFile(users, &userCount);
+//	luuFile(users, &userCount);
     printf("\nUser added successfully!\n");
     handleAdminMenuOrExit();
 }
@@ -374,36 +374,23 @@ void handleAdminMenuOrExit() {
 }
 
 
-void loadFile(User users[], int *userCount) {
-    FILE *file = fopen("baba.bin", "rb"); 
-    if (file == NULL) {
-        printf("Error opening file for reading.\n");
-        return;
-    }
-
- 
-    fread(userCount, sizeof(int), 1, file);
- 
-    fread(users, sizeof(User), *userCount, file);
-
-    fclose(file);
-    printf("Data has been loaded successfully.\n");
-}
-
-
-void luuFile(User users[], int userCount) {
-    FILE *file = fopen("baba.bin", "wb");  
-    if (file == NULL) {
-        printf("loi mo file.\n");
-        return;
-    }
-    fwrite(&userCount, sizeof(int), 1, file);
-    fwrite(users, sizeof(User), userCount, file);
-    fclose(file);
-    printf("Data has been saved successfully.\n");
-}
-
-
+//void loadFile(User users[], int *userCount) {
+//    FILE *file = fopen("baba.bin", "rb"); 
+//    if (file == NULL) {
+//        printf("Error opening file for reading.\n");
+//        return;
+//    }
+//
+// 
+//    fread(userCount, sizeof(int), 1, file);
+// 
+//    fread(users, sizeof(User), *userCount, file);
+//
+//    fclose(file);
+//    printf("Data has been loaded successfully.\n");
+//}
+//
+//
 
 int userLogin(User users[], int userCount) {
     char username[50], password[50];
@@ -454,7 +441,6 @@ void changePassword(User *user) {
 
 
 //sau khi usser vao duoc
-
 void displayUserDetails(User users[], int userCount) {
     printf("\n--- User Details ---\n");
     printf("|============|====================|========================|=====================|===============|========|\n");
@@ -502,9 +488,6 @@ void editUserInfo(User *user) {
     printf("Enter new date of birth (dd mm yyyy): ");
     scanf("%d %d %d", &(*user).day, &(*user).month, &(*user).year);
 
-    printf("Enter new status: ");
-    scanf(" %[^\n]s", (*user).status);
-
     printf("\nInformation has been updated successfully!\n");
 
     // Display updated information
@@ -543,7 +526,7 @@ void depositMoney(User *user) {
     printf("Amount deposited: %.2f\n", transaction.amount);
     printf("New Balance: %.2f\n", user->balance); 
 }
-//
+
 //void withdrawMoney(User *user) {
 //    float amount;
 //    printf("\n=== Withdraw Money ===\n");
@@ -557,14 +540,14 @@ void depositMoney(User *user) {
 //    } else if (amount > user.balance) {
 //        printf("Insufficient balance! You cannot withdraw more than your current balance.\n");
 //    } else {
-//        // C?p nh?t s? du sau khi rút ti?n
+//        // cap nhat sau khi rut
 //        user.balance -= amount;
 //        printf("\nTransaction Successful!\n");
 //        printf("Amount withdrawn: %.2f\n", amount);
 //        printf("New Balance: %.2f\n", user->balance);
 //    }
 //}
-
+//
 //void changePassword(User *user) {
 //    char oldPassword[50];
 //    printf("Enter current password: ");
@@ -586,4 +569,3 @@ void depositMoney(User *user) {
 //    strcpy(user->password, newPassword);
 //    printf("Password updated successfully!\n");
 //}
-
