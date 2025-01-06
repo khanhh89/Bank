@@ -151,7 +151,7 @@ int isDuplicate(User users[], int userCount, const char* id, const char* phone, 
             (phone && strcmp(users[i].phone, phone) == 0) ||
             (email && strcmp(users[i].email, email) == 0) ||
             (username && strcmp(users[i].username, username) == 0)) {
-            return 1;  // Trùng
+            return 1;  // TrÃ¹ng
         }
     }
     return 0;
@@ -181,9 +181,9 @@ void account(int *a) {
     system("cls");
     char stk[20], mk[20];
     do {
-        printf("login Name Admin: ");
+        printf("login Name Admin(2006): ");
         scanf("%s", stk);
-        printf("Password Admin: ");
+        printf("Password Admin(2006): ");
         scanf("%s", mk);
         if (strcmp(stk, "2006") == 0 && strcmp(mk, "2006") == 0) {
             printf("Log in successfully\n");
@@ -557,7 +557,7 @@ void depositMoney(User *user) {
 //    } else if (amount > user.balance) {
 //        printf("Insufficient balance! You cannot withdraw more than your current balance.\n");
 //    } else {
-//        // C?p nh?t s? du sau khi rút ti?n
+//        // C?p nh?t s? du sau khi rÃºt ti?n
 //        user.balance -= amount;
 //        printf("\nTransaction Successful!\n");
 //        printf("Amount withdrawn: %.2f\n", amount);
